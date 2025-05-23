@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import EnhancedBackground from "@/components/EnhancedBackground";
 import NeonHeading from "@/components/NeonHeading";
@@ -159,7 +158,6 @@ const Index = () => {
                 color="blue"
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                 className="hover:translate-y-[-3px] transition-transform px-6 py-5 text-base"
-                variant="outline"
               >
                 Contact Us
               </NeonButton>
