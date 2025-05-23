@@ -7,13 +7,15 @@ interface FloatingSphereProps {
   color?: string;
   delay?: number;
   className?: string;
+  style?: React.CSSProperties;
 }
 
 const FloatingSphere: React.FC<FloatingSphereProps> = ({ 
   size = 100, 
   color = "#2563eb", 
   delay = 0,
-  className
+  className,
+  style
 }) => {
   return (
     <div 
@@ -27,7 +29,8 @@ const FloatingSphere: React.FC<FloatingSphereProps> = ({
         background: `radial-gradient(circle at 30% 30%, ${color}30, ${color}05)`,
         boxShadow: `0 0 30px ${color}30`,
         border: `1px solid ${color}30`,
-        animationDelay: `${delay}s`
+        animationDelay: `${delay}s`,
+        ...style
       }}
     />
   );
