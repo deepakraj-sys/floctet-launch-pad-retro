@@ -1,10 +1,11 @@
+
 import React, { useState, useEffect } from 'react';
 import EnhancedBackground from "@/components/EnhancedBackground";
 import NeonHeading from "@/components/NeonHeading";
 import TeamMember from "@/components/TeamMember";
 import ContactInfo from "@/components/ContactInfo";
 import NeonButton from "@/components/NeonButton";
-import { ArrowDownCircle, ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { useIsMobile } from "@/hooks/use-mobile";
 import FloatingSphere from '@/components/FloatingSphere';
@@ -84,6 +85,26 @@ const Index = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  // Calculate scroll-based animations
+  const calculateTransform = (baseFactor: number, offset = 0) => {
+    return {
+      transform: `translateY(${scrollY * baseFactor + offset}px)`,
+      transition: 'transform 0.1s ease-out',
+    };
+  };
+
+  const opacityOnScroll = (startPoint: number, endPoint: number) => {
+    const start = startPoint;
+    const end = endPoint;
+    const current = scrollY;
+    
+    if (current <= start) return { opacity: 1 };
+    if (current >= end) return { opacity: 0 };
+    
+    const opacity = 1 - (current - start) / (end - start);
+    return { opacity };
+  };
+
   // Loading screen
   if (isLoading) {
     return (
@@ -101,52 +122,67 @@ const Index = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background pb-16">
+    <div className="min-h-screen bg-background pb-16 overflow-x-hidden">
       <EnhancedBackground />
       
       {/* Hero Section */}
       <section className="relative min-h-screen flex flex-col items-center justify-center pt-16 px-4">
         <div 
           className="max-w-4xl mx-auto text-center relative z-10"
-          style={{
-            transform: `translateY(${scrollY * 0.2}px)`,
-            transition: 'transform 0.1s ease-out',
-          }}
+          style={calculateTransform(0.15)}
         >
           <div className="space-y-8 relative">
-            <div className="inline-block mb-4 px-4 py-1.5 rounded-full backdrop-blur-sm bg-gradient-to-r from-neon-blue/10 to-neon-lightblue/10 border border-neon-lightblue/30 shadow-lg shadow-neon-blue/10">
+            <div 
+              className="inline-block mb-4 px-4 py-1.5 rounded-full backdrop-blur-sm bg-gradient-to-r from-neon-blue/10 to-neon-lightblue/10 border border-neon-lightblue/30 shadow-lg shadow-neon-blue/10"
+              style={calculateTransform(-0.05)}
+            >
               <p className="text-sm font-medium shimmer-text">Launching Soon</p>
             </div>
             
-            <NeonHeading className="text-4xl md:text-5xl lg:text-7xl mb-6 relative">
+            <NeonHeading 
+              className="text-4xl md:text-5xl lg:text-7xl mb-6 relative"
+              style={calculateTransform(0.05)}
+            >
               FLOCTET TECHNOLOGIES
             </NeonHeading>
             
-            <p className="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto backdrop-blur-sm bg-black/20 p-4 rounded-lg">
+            <p 
+              className="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto backdrop-blur-sm bg-black/20 p-4 rounded-lg"
+              style={calculateTransform(-0.08)}
+            >
               Affordable web development, apps, and AI solutions crafted by talented students.
             </p>
             
             {/* Countdown Timer */}
-            <div className="flex flex-wrap justify-center gap-4 my-8">
-              <div className="countdown-item bg-black/30 backdrop-blur-md p-4 rounded-lg border border-neon-blue/20 w-20">
+            <div 
+              className="flex flex-wrap justify-center gap-4 my-8"
+              style={{
+                ...calculateTransform(-0.1),
+                ...opacityOnScroll(0, 500)
+              }}
+            >
+              <div className="countdown-item bg-black/30 backdrop-blur-md p-4 rounded-lg border border-neon-blue/20 w-20 transform transition-transform hover:scale-105">
                 <div className="text-3xl font-bold text-white">{countdown.days}</div>
                 <div className="text-xs text-gray-400 uppercase tracking-wider">Days</div>
               </div>
-              <div className="countdown-item bg-black/30 backdrop-blur-md p-4 rounded-lg border border-neon-blue/20 w-20">
+              <div className="countdown-item bg-black/30 backdrop-blur-md p-4 rounded-lg border border-neon-blue/20 w-20 transform transition-transform hover:scale-105">
                 <div className="text-3xl font-bold text-white">{countdown.hours}</div>
                 <div className="text-xs text-gray-400 uppercase tracking-wider">Hours</div>
               </div>
-              <div className="countdown-item bg-black/30 backdrop-blur-md p-4 rounded-lg border border-neon-blue/20 w-20">
+              <div className="countdown-item bg-black/30 backdrop-blur-md p-4 rounded-lg border border-neon-blue/20 w-20 transform transition-transform hover:scale-105">
                 <div className="text-3xl font-bold text-white">{countdown.minutes}</div>
                 <div className="text-xs text-gray-400 uppercase tracking-wider">Mins</div>
               </div>
-              <div className="countdown-item bg-black/30 backdrop-blur-md p-4 rounded-lg border border-neon-blue/20 w-20">
+              <div className="countdown-item bg-black/30 backdrop-blur-md p-4 rounded-lg border border-neon-blue/20 w-20 transform transition-transform hover:scale-105">
                 <div className="text-3xl font-bold text-white">{countdown.seconds}</div>
                 <div className="text-xs text-gray-400 uppercase tracking-wider">Secs</div>
               </div>
             </div>
             
-            <div className="flex flex-wrap justify-center gap-4 pt-6">
+            <div 
+              className="flex flex-wrap justify-center gap-4 pt-6"
+              style={calculateTransform(-0.12)}
+            >
               <NeonButton 
                 color="blue"
                 onClick={() => window.open("https://docs.google.com/forms/d/e/1FAIpQLSdrR-i4XteXw0CFmMnbc7vQp3ylv6Wk-wepbPzeEAv-PwjvKQ/viewform", "_blank")}
@@ -164,25 +200,34 @@ const Index = () => {
             </div>
           </div>
         </div>
-        
-        <div className="absolute bottom-10 left-0 right-0 flex justify-center animate-bounce">
-          <button 
-            onClick={() => document.getElementById('team')?.scrollIntoView({ behavior: 'smooth' })}
-            className="text-white/70 hover:text-white"
-          >
-            <ArrowDownCircle className="h-10 w-10" />
-          </button>
-        </div>
       </section>
       
       {/* Team Section */}
       <section id="team" className="py-20 px-4 relative">
         <div className="absolute inset-0 pointer-events-none">
-          <FloatingSphere size={300} color="#2563eb" className="top-[10%] right-[-10%] opacity-10" />
-          <FloatingSphere size={200} color="#3b82f6" className="bottom-[10%] left-[-5%] opacity-10" delay={1} />
+          <FloatingSphere 
+            size={300} 
+            color="#2563eb" 
+            className="top-[10%] right-[-10%] opacity-10"
+            style={calculateTransform(0.08)}
+          />
+          <FloatingSphere 
+            size={200} 
+            color="#3b82f6" 
+            className="bottom-[10%] left-[-5%] opacity-10" 
+            delay={1}
+            style={calculateTransform(-0.05)}
+          />
         </div>
         
-        <div className="max-w-6xl mx-auto relative z-10">
+        <div 
+          className="max-w-6xl mx-auto relative z-10"
+          style={{
+            transform: `translateY(${Math.max(0, (scrollY - 300) * 0.1)}px)`,
+            opacity: Math.min(1, Math.max(0, (scrollY - 300) / 400)),
+            transition: 'transform 0.3s ease-out, opacity 0.5s ease-out',
+          }}
+        >
           <div className="text-center mb-12">
             <NeonHeading className="text-3xl md:text-4xl mb-4 inline-block relative">
               <span className="relative z-10">Founder</span>
@@ -206,9 +251,23 @@ const Index = () => {
       <Separator className="max-w-md mx-auto bg-neon-blue/30" />
       
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-4 relative">
+      <section 
+        id="contact" 
+        className="py-20 px-4 relative"
+        style={{
+          opacity: Math.min(1, Math.max(0.2, (scrollY - 800) / 400)),
+          transform: `translateY(${Math.max(0, 30 - (scrollY - 800) * 0.1)}px)`,
+          transition: 'transform 0.3s ease-out, opacity 0.5s ease-out',
+        }}
+      >
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <FloatingSphere size={250} color="#60a5fa" className="bottom-[20%] right-[10%] opacity-10" delay={1.2} />
+          <FloatingSphere 
+            size={250} 
+            color="#60a5fa" 
+            className="bottom-[20%] right-[10%] opacity-10" 
+            delay={1.2}
+            style={calculateTransform(0.03)}
+          />
         </div>
         
         <div className="max-w-6xl mx-auto relative z-10">
@@ -239,8 +298,15 @@ const Index = () => {
       </section>
       
       {/* Newsletter */}
-      <section className="py-12 px-4 relative">
-        <div className="max-w-md mx-auto bg-black/30 backdrop-blur-md p-6 rounded-lg border border-neon-blue/20 relative z-10">
+      <section 
+        className="py-12 px-4 relative"
+        style={{
+          opacity: Math.min(1, Math.max(0.2, (scrollY - 1200) / 400)),
+          transform: `translateY(${Math.max(0, 30 - (scrollY - 1200) * 0.1)}px)`,
+          transition: 'transform 0.3s ease-out, opacity 0.5s ease-out',
+        }}
+      >
+        <div className="max-w-md mx-auto bg-black/30 backdrop-blur-md p-6 rounded-lg border border-neon-blue/20 relative z-10 transform transition-transform hover:scale-[1.02]">
           <div className="text-center mb-6">
             <h3 className="text-xl font-semibold text-white mb-2">Get Notified At Launch</h3>
             <p className="text-gray-300 text-sm">Be the first to know when we're fully launched</p>
@@ -254,7 +320,7 @@ const Index = () => {
             />
             <button 
               type="submit" 
-              className="w-full bg-neon-blue text-white font-medium py-3 rounded-md hover:bg-neon-lightblue transition-colors duration-300"
+              className="w-full bg-neon-blue text-white font-medium py-3 rounded-md hover:bg-neon-lightblue transition-colors duration-300 transform hover:translate-y-[-2px]"
             >
               Notify Me
             </button>
