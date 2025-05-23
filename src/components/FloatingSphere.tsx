@@ -11,14 +11,14 @@ interface FloatingSphereProps {
 
 const FloatingSphere: React.FC<FloatingSphereProps> = ({ 
   size = 100, 
-  color = "#00f0ff", 
+  color = "#2563eb", 
   delay = 0,
   className
 }) => {
   return (
     <div 
       className={cn(
-        "rounded-full absolute blur-sm animate-bounce-3d", 
+        "rounded-full absolute blur-sm animate-pulse", 
         className
       )}
       style={{ 

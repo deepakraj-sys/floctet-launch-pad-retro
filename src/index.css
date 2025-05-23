@@ -5,44 +5,44 @@
 
 @layer base {
   :root {
-    --background: 230 20% 8%;
+    --background: 220 30% 10%;
     --foreground: 210 40% 98%;
 
-    --card: 230 20% 12%;
+    --card: 220 30% 15%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 230 20% 12%;
+    --popover: 220 30% 15%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 200 100% 60%;
-    --primary-foreground: 230 20% 15%;
+    --primary: 217 100% 65%;
+    --primary-foreground: 220 30% 15%;
 
-    --secondary: 280 100% 65%;
+    --secondary: 217 70% 50%;
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 230 20% 20%;
+    --muted: 220 30% 20%;
     --muted-foreground: 220 10% 70%;
 
-    --accent: 320 100% 70%;
+    --accent: 217 100% 70%;
     --accent-foreground: 210 40% 98%;
 
     --destructive: 0 80% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 230 20% 18%;
-    --input: 230 20% 18%;
-    --ring: 200 100% 70%;
+    --border: 220 30% 18%;
+    --input: 220 30% 18%;
+    --ring: 217 100% 70%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 230 20% 10%;
+    --sidebar-background: 220 30% 12%;
     --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 200 100% 60%;
-    --sidebar-primary-foreground: 230 20% 15%;
-    --sidebar-accent: 230 20% 15%;
+    --sidebar-primary: 217 100% 65%;
+    --sidebar-primary-foreground: 220 30% 15%;
+    --sidebar-accent: 220 30% 15%;
     --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 230 20% 20%;
-    --sidebar-ring: 200 100% 70%;
+    --sidebar-border: 220 30% 20%;
+    --sidebar-ring: 217 100% 70%;
   }
 }
 
@@ -54,34 +54,21 @@
   body {
     @apply bg-background text-foreground;
     background-image: 
-      radial-gradient(circle at 15% 50%, rgba(0, 240, 255, 0.08) 0%, transparent 25%),
-      radial-gradient(circle at 85% 30%, rgba(157, 0, 255, 0.08) 0%, transparent 25%),
-      linear-gradient(0deg, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+      radial-gradient(circle at 15% 50%, rgba(37, 99, 235, 0.1) 0%, transparent 25%),
+      radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.1) 0%, transparent 25%),
+      linear-gradient(0deg, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
     background-attachment: fixed;
     background-size: 100% 100%;
   }
 
-  /* 3D perspective utilities */
-  .perspective-800 {
-    perspective: 800px;
-  }
-  
-  .preserve-3d {
-    transform-style: preserve-3d;
-  }
-  
-  .backface-hidden {
-    backface-visibility: hidden;
-  }
-  
   /* Gradient text */
   .text-gradient {
     @apply text-transparent bg-clip-text;
-    background-image: linear-gradient(to right, #00f0ff, #9d00ff, #ff00c1);
+    background-image: linear-gradient(to right, #2563eb, #3b82f6, #60a5fa);
   }
   
   .shimmer-text {
-    background: linear-gradient(to right, #00f0ff, #9d00ff, #ff00c1, #00f0ff);
+    background: linear-gradient(to right, #2563eb, #3b82f6, #60a5fa, #2563eb);
     background-size: 200% auto;
     background-clip: text;
     -webkit-text-fill-color: transparent;
