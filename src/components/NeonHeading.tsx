@@ -11,7 +11,7 @@ const NeonHeading: React.FC<NeonHeadingProps> = ({ children, className }) => {
   return (
     <h1 
       className={cn(
-        "font-orbitron font-bold text-transparent bg-clip-text bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink animate-text-shimmer",
+        "font-montserrat font-bold text-transparent bg-clip-text bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink animate-text-shimmer",
         className
       )}
     >

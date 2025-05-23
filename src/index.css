@@ -61,49 +61,25 @@
     background-size: 100% 100%;
   }
 
-  .grid-pattern {
-    background-image: linear-gradient(rgba(157, 0, 255, 0.1) 1px, transparent 1px), 
-                     linear-gradient(90deg, rgba(157, 0, 255, 0.1) 1px, transparent 1px);
-    background-size: 40px 40px;
-    background-position: 0 0;
+  /* 3D perspective utilities */
+  .perspective-800 {
+    perspective: 800px;
   }
   
-  .neon-border {
-    --border-width: 2px;
-    --border-radius: 8px;
-    --padding: 4px;
-    
-    position: relative;
-    border-radius: var(--border-radius);
+  .preserve-3d {
+    transform-style: preserve-3d;
   }
   
-  .neon-border::before {
-    content: '';
-    position: absolute;
-    top: calc(-1 * var(--border-width));
-    left: calc(-1 * var(--border-width));
-    width: calc(100% + var(--border-width) * 2);
-    height: calc(100% + var(--border-width) * 2);
-    background: linear-gradient(60deg, #00f0ff, #9d00ff, #ff00c1, #00f0ff);
-    background-size: 300% 300%;
-    background-position: 0 50%;
-    border-radius: calc(var(--border-radius) + var(--border-width));
-    z-index: -1;
-    animation: moveGradient 4s alternate infinite;
+  .backface-hidden {
+    backface-visibility: hidden;
   }
   
-  @keyframes moveGradient {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
+  /* Gradient text */
+  .text-gradient {
+    @apply text-transparent bg-clip-text;
+    background-image: linear-gradient(to right, #00f0ff, #9d00ff, #ff00c1);
   }
-
+  
   .shimmer-text {
     background: linear-gradient(to right, #00f0ff, #9d00ff, #ff00c1, #00f0ff);
     background-size: 200% auto;

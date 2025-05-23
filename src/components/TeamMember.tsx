@@ -26,7 +26,7 @@ const TeamMember: React.FC<TeamMemberProps> = ({
         <div className="flex flex-col items-center">
           {imageUrl && (
             <div className="mb-4 relative">
-              <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-neon-blue glow-effect">
+              <div className="w-32 h-32 rounded-full overflow-hidden border-2 border-neon-blue animate-pulse">
                 <img src={imageUrl} alt={name} className="w-full h-full object-cover" />
               </div>
               {instagramUrl && (
@@ -34,16 +34,16 @@ const TeamMember: React.FC<TeamMemberProps> = ({
                   href={instagramUrl} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="absolute bottom-0 right-0 bg-neon-blue/80 p-1 rounded-full hover:bg-neon-blue transition-colors"
+                  className="absolute bottom-0 right-0 bg-neon-blue/80 p-1.5 rounded-full hover:bg-neon-blue transition-colors"
                 >
-                  <Instagram className="h-4 w-4 text-black" />
+                  <Instagram className="h-5 w-5 text-black" />
                 </a>
               )}
             </div>
           )}
           
-          <h3 className="font-orbitron text-xl font-bold text-white mb-1">{name}</h3>
-          <p className="text-neon-blue font-medium mb-2">{role}</p>
+          <h3 className="font-montserrat text-xl font-bold text-white mb-1">{name}</h3>
+          <p className="text-neon-blue font-medium mb-3">{role}</p>
           
           <div className="flex flex-wrap gap-2 justify-center">
             {skills.map((skill, index) => (

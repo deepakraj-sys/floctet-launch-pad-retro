@@ -24,7 +24,7 @@ const NeonButton: React.FC<NeonButtonProps> = ({
   return (
     <Button
       className={cn(
-        "border-2 font-orbitron transition-all duration-300 shadow-[0_0_10px_rgba(0,0,0,0.1)] hover:shadow-[0_0_15px] backdrop-blur-sm",
+        "border-2 font-montserrat transition-all duration-300 shadow-[0_0_10px_rgba(0,0,0,0.1)] hover:shadow-[0_0_15px] backdrop-blur-sm",
         colorStyles[color],
         `hover:shadow-${color === "blue" ? "neon-blue" : color === "purple" ? "neon-purple" : color === "pink" ? "neon-pink" : "neon-green"}`,
         className

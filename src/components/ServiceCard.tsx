@@ -12,11 +12,11 @@ interface ServiceCardProps {
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, icon: Icon, className }) => {
   return (
-    <Card className={cn("border border-neon-purple/30 bg-black/40 backdrop-blur-sm hover:border-neon-purple/70 transition-all duration-300 neon-border", className)}>
+    <Card className={cn("border border-neon-purple/30 bg-black/40 backdrop-blur-sm hover:border-neon-purple/70 transition-all duration-300", className)}>
       <CardHeader className="pb-2">
         <div className="flex items-center gap-2">
           <Icon className="h-6 w-6 text-neon-purple" />
-          <CardTitle className="font-orbitron text-lg text-white">{title}</CardTitle>
+          <CardTitle className="font-montserrat text-lg text-white">{title}</CardTitle>
         </div>
       </CardHeader>
       <CardContent>
