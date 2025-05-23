@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import EnhancedBackground from "@/components/EnhancedBackground";
 import NeonHeading from "@/components/NeonHeading";
@@ -240,7 +239,7 @@ const Index = () => {
               name="DEEPAK RAJ R"
               role="Founder"
               skills={["Full-Stack Developer", "AI Developer", "Software Developer"]}
-              imageUrl="https://placehold.co/400x400/111111/FFFFFF?text=DR"
+              imageUrl="/lovable-uploads/8fe0a630-7e19-4a75-8947-5c9aeaef45e4.png"
               instagramUrl="https://www.instagram.com/dee_pakrajr/"
               className="transform transition-transform duration-500 hover:scale-105 hover:shadow-lg hover:shadow-neon-blue/20"
             />
