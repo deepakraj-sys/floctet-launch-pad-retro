@@ -34,9 +34,9 @@ const Index = () => {
 
   // Countdown timer
   useEffect(() => {
-    // Set launch date - one month from current date
+    // Set launch date - 3 days from current date
     const launchDate = new Date();
-    launchDate.setMonth(launchDate.getMonth() + 1);
+    launchDate.setDate(launchDate.getDate() + 3);
     
     const updateCountdown = () => {
       const now = new Date();
