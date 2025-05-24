@@ -330,10 +330,10 @@ const Index = () => {
       {/* Footer */}
       <footer className="pt-12 pb-8 px-4 text-center relative z-10">
         <a 
-          href="https://floctet.tech" 
+          href="https://floctet-website.vercel.app/" 
           className="inline-block shimmer-text text-xl font-bold mb-3 transition-all duration-300 hover:scale-110"
         >
-          floctet.tech
+          floctet-website.vercel.app
         </a>
         <p className="text-gray-400 text-sm">
           © {new Date().getFullYear()} FLOCTET TECHNOLOGIES. All rights reserved.
